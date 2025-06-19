@@ -1,3 +1,234 @@
+* {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+.noselect {
+  -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Old versions of Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome, Edge, Opera and Firefox */
+}
+
 body {
-    background-color: lightgray;
+    background-color: rgb(240, 240, 240);
+    padding: 0px;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+header#main {
+    background-color: #f5d001;
+    padding: 15px;
+    box-shadow: rgba(0, 0, 0, 0.384) 1px 0px 10px;
+    color: #967f00;
+    z-index: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#add-todo {
+    font-weight: bold;
+    text-align: center;
+    width: 100px;
+    height: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: #f5d001;
+    background-color: #967f00;
+    border-radius: 5px;
+    box-shadow: 2px 2px 2px #867200;
+    cursor: pointer;
+}
+
+#add-todo:hover {
+    background-color: #746200;
+}
+
+#cover-shadow {
+    background-color: #f5d001;
+    height: 15px;
+    width: auto;
+    margin-top: -14px;
+    z-index: 2;
+}
+
+#content {
+    display: flex;
+    align-items: stretch;
+    height: 92%;
+}
+
+#projects {
+    background-color: white;
+    box-shadow: rgba(0, 0, 0, 0.384) 1px 0px 10px;
+    font-size: 20px;
+    z-index: 1;
+    width: 250px;
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+}
+
+#add-project {
+    font-weight: bold;
+    font-size: 24px;
+    color: gray;
+    text-align: center;
+    margin-left: auto;
+    margin-top: -5px;
+    width: 25px;
+    height: 25px;
+    background-color: rgb(236, 236, 236);
+    border-radius: 5px;
+    box-shadow: 1px 1px 0px rgb(170, 170, 170);
+    cursor: pointer;
+}
+
+#add-project:hover {
+    color: rgb(236, 236, 236);
+    background-color: gray;
+}
+
+#add-project p {
+    margin-top: -3px;
+}
+
+ul {
+    list-style-type: none;
+}
+
+li {
+    cursor: pointer;
+    color: gray;
+    font-size: 26px;
+    margin-bottom: 10px;
+}
+
+li:hover, li:active {
+    text-decoration: gray underline;
+}
+
+#delete-project {
+    margin-top: auto;
+    align-self: flex-end;
+    width: 75px;
+    height: 40px;
+    border: 0px;
+    border-radius: 5px;
+    background-color: rgb(240, 56, 56);
+    box-shadow: 1px 1px 1px rgb(175, 175, 175);
+    color: white;
+}
+
+#delete-project:hover {
+    background-color: rgb(187, 37, 37);
+}
+
+main {
+    flex: 1;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-auto-rows: 200px;
+    padding: 25px;
+    gap: 25px;
+    overflow: auto;
+}
+
+.card {
+    border-top: #f5d001 20px solid;
+    border-radius: 15px;
+    background-color: white;
+    box-shadow: 3px 3px 1px rgba(0, 0, 0, 0.11);
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.card #delete-todo {
+    margin-left: auto;
+    margin-top: -29px;
+    margin-bottom: 10px;
+    cursor: default;
+}
+
+.card #delete-todo:hover {
+    color: rgb(197, 0, 0);
+}
+
+.card p {
+    text-align: right;
+    margin-top: 5px;
+    color: gray;
+}
+
+.card h5 {
+    text-align: right;
+    color: gray;
+}
+
+.card span {
+    display: flex;
+    justify-content: space-between;
+    margin-top: auto;
+}
+
+.card h6 {
+    margin-top: auto;
+    font-size: 24px;
+    width: 25px;
+    height: 25px;
+    border-radius: 5px;
+    color: red;
+    text-align: center;
+    cursor: default;
+}
+
+.true {
+    color: green !important;
+    padding-bottom: 30px;
+}
+
+.card .medium {
+    color: #e4c200;
+}
+
+.card .low {
+    color: green;
+}
+
+.card #toggle-complete:hover {
+    background-color: rgb(192, 192, 192);
+}
+
+dialog {
+    margin: auto;
+    border: 0px;
+    width: 300px;
+    height: 150px;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+dialog form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+}
+
+dialog form button {
+    margin-left: 50%;
+}
+
+dialog#todo-input {
+    height: 300px;
 }
