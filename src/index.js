@@ -3,10 +3,6 @@ import "./styles.css";
 import { Project } from "./projects.js";
 import { DOM } from "./dom-manip.js";
 
-let project1 = new Project("School");
-project1.addTodo("Homework #3", "Complete assignment 3b", "2025/08/03", 1);
-project1.addTodo("Take Out Trash", "No recycling today", "2025/11/16", 2);
-project1.addTodo("Make Bed", "Just did laundry", "2026/09/23", 0);
 // project1.addTodo("Homework #3", "Complete assignment 3b", "08/23/2025", 1, project1.id);
 // project1.addTodo("Take Out Trash", "No recycling today", "07/11/2025", 2, project1.id);
 // project1.addTodo("Make Bed", "Just did laundry", "09/02/2025", 0, project1.id);
@@ -30,6 +26,11 @@ if (projects) {
     });
         return proj;
     });
+} else {
+    let project1 = new Project("School");
+    project1.addTodo("Homework #3", "Complete assignment 3b", "2025/08/03", 1);
+    project1.addTodo("Take Out Trash", "No recycling today", "2025/11/16", 2);
+    project1.addTodo("Make Bed", "Just did laundry", "2026/09/23", 0);
 }
 
 // if(projects) Project.projectList = projects;
