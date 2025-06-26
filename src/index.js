@@ -11,6 +11,8 @@ let projects = JSON.parse(localStorage.getItem("projects"));
 
 console.log(projects);
 
+console.log("Current version");
+
 if (projects) {
     Project.projectList = projects.map((p) => {
         let proj = new Project(p.name);
