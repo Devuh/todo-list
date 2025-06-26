@@ -2,7 +2,6 @@ import "./styles.css";
 
 import { Project } from "./projects.js";
 import { DOM } from "./dom-manip.js";
-import { differenceInQuarters } from "date-fns";
 
 let project1 = new Project("School");
 project1.addTodo("Homework #3", "Complete assignment 3b", "2025/08/03", 1);
@@ -11,6 +10,29 @@ project1.addTodo("Make Bed", "Just did laundry", "2026/09/23", 0);
 // project1.addTodo("Homework #3", "Complete assignment 3b", "08/23/2025", 1, project1.id);
 // project1.addTodo("Take Out Trash", "No recycling today", "07/11/2025", 2, project1.id);
 // project1.addTodo("Make Bed", "Just did laundry", "09/02/2025", 0, project1.id);
+
+let projects = JSON.parse(localStorage.getItem("projects"));
+
+console.log(projects);
+
+if (projects) {
+    Project.projectList = projects.map((p) => {
+        let proj = new Project(p.name);
+        proj.id = p.id;
+        proj.todos = p.todos.map((t) => {
+        let todo = {
+            ...t,
+            toggleComplete: function () {
+                this.isComplete = !this.isComplete;
+            }
+        };
+        return todo;
+    });
+        return proj;
+    });
+}
+
+// if(projects) Project.projectList = projects;
 
 DOM.updateProjects();
 DOM.selectProject();
@@ -45,6 +67,7 @@ body.addEventListener("click", (event) => {
             DOM.closeProjectName();
             document.querySelector("#project-name-input").value = "";
             DOM.updateProjects();
+            localStorage.setItem("projects", JSON.stringify(Project.projectList));
         } else {
             DOM.closeProjectName();
         }
@@ -57,6 +80,7 @@ body.addEventListener("click", (event) => {
             DOM.updateProjects();
             DOM.selectProject();
             currentProject = Project.projectList[0];
+            localStorage.setItem("projects", JSON.stringify(Project.projectList));
         }
     }
 
@@ -67,6 +91,7 @@ body.addEventListener("click", (event) => {
         toggledTodo[0].toggleComplete();
         event.target.classList.toggle("true");
         event.target.classList.contains("true") ? event.target.textContent = "✓" : event.target.textContent = "X";
+        localStorage.setItem("projects", JSON.stringify(Project.projectList));
     }
 
     // Add to-do
@@ -88,15 +113,16 @@ body.addEventListener("click", (event) => {
         document.querySelector("#todo-description-input").value = "";
         document.querySelector("#todo-date-input").value = "";
         document.querySelector("#todo-priority-input").value = "Low";
+        localStorage.setItem("projects", JSON.stringify(Project.projectList));
     }
 
     // Delete to-do
-
     if(event.target.id == "delete-todo") {
         if(currentProject.todos.length > 1) {
             let deletedTodo = currentProject.todos.filter((todos) => todos.id == event.target.parentNode.id);
             currentProject.deleteTodo(deletedTodo[0]);
             DOM.selectProject(currentProject);
+            localStorage.setItem("projects", JSON.stringify(Project.projectList));
         }
     }
 });
