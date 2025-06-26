@@ -42,7 +42,7 @@ DOM.selectProject();
 
 // Event Handler
 
-let currentProject = project1;
+let currentProject = Project.projectList[0];
 
 const body = document.querySelector("body");
 
