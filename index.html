@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+<script defer src="main.js"></script></head>
+<body>
+    <dialog id="project-name">
+        <form>
+            <label for="project-name-input">Project Name:</label>
+            <input type="text" id="project-name-input" placeholder="Example Project" required>
+            <button type="button" id="submit-project-name">Submit</button>
+        </form>
+    </dialog>
+
+    <dialog id="todo-input">
+        <form>
+            <label for="todo-title-input">Title:</label>
+            <input type="text" id="todo-title-input" placeholder="Example Title" required>
+            <label for="todo-description-input">Description:</label>
+            <input type="textarea" id="todo-description-input" placeholder="Example Description" required>
+            <label for="todo-date-input">Due Date:</label>
+            <input type="date" id="todo-date-input" required>
+            <label for="todo-priority-input">Priority:</label>
+            <select id="todo-priority-input">
+                <option value="0">Low</option>
+                <option value="1">Medium</option>
+                <option value="2">High</option>
+            </select>
+            <button type="button" id="submit-todo">Submit</button>
+        </form>
+    </dialog>
+
+    <header id="main">
+        <h1>To-Do List</h1>
+        <div id="add-todo">Add To-Do</div>
+    </header>
+    <div id="cover-shadow"></div>
+    <div id="content">
+        <div id="projects">
+            <div id="add-project"><p>+</p></div>
+            <ul>
+            </ul>
+            <button id="delete-project">Delete Project</button>
+        </div>
+        <main>
+            <div class="card">
+                <div id="delete-todo">x</div>
+                <h5></h5>
+                <header>
+                    <h3></h3>
+                    <div class="delete"></div>
+                </header>
+                <p></p>
+                <span>
+                    <h6 id="toggle-complete">X</h6>
+                    <h6 id="priority">!</h6>
+                </span>
+            </div>
+        </main>
+    </div>
+</body>
+</html>
